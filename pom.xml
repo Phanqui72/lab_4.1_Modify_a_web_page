@@ -15,20 +15,25 @@
     </properties>
 
     <dependencies>
-        <!-- THÊM PHỤ THUỘC JAKARTA SERVLET VÀO ĐÂY -->
+        <!-- PHỤ THUỘC SERVLET ĐÃ CÓ -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <version>5.0.0</version>
             <scope>provided</scope>
         </dependency>
-    </dependencies>
-    <build>
-        <!-- Tên file .war cuối cùng sẽ được tạo ra -->
-        <finalName>ch04_ex1_survey</finalName>
 
+        <!-- THÊM PHỤ THUỘC JAKARTA MAIL VÀO ĐÂY -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>jakarta.mail</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>ch04_ex1_survey</finalName>
         <plugins>
-            <!-- Các plugin khác của bạn (nếu có) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -36,5 +41,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
