@@ -23,5 +23,18 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    <build>
+        <!-- Tên file .war cuối cùng sẽ được tạo ra -->
+        <finalName>ch04_ex1_survey</finalName>
+
+        <plugins>
+            <!-- Các plugin khác của bạn (nếu có) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
