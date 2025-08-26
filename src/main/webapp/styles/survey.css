@@ -1,59 +1,173 @@
-/* The styles for the elements */
+/* --- Google Fonts Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* --- Biến màu và Thiết lập Tổng thể --- */
+:root {
+    --primary-blue: #007bff;
+    --primary-blue-dark: #0056b3;
+    --text-color: #343a40;
+    --text-color-light: #6c757d;
+    --border-color: #ced4da;
+    --background-light: #f8f9fa;
+    --background-white: #ffffff;
+    --success-color: #28a745;
+    --shadow-soft: 0 8px 25px rgba(0, 0, 0, 0.08);
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+}
+
+/* --- Thiết lập Body & Font chữ --- */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 85%;
-    margin-left: 2em;
-    margin-right: 2em;
-    width: 400px;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-color);
+    margin: 0;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
+
+/* --- Container chính của Form (Layout thẻ) --- */
+form {
+    max-width: 650px;
+    width: 100%;
+    background-color: var(--background-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 2.5em 3em;
+    border-top: 5px solid var(--primary-blue);
+}
+
+/* --- Logo --- */
+img[alt="Murach Logo"] {
+    display: block;
+    max-width: 180px;
+    margin: 0 auto 1.5em auto;
+}
+
+/* --- Tiêu đề Form --- */
 h1 {
-    font-size: 160%;
-    color: teal;
-    margin-bottom: .5em;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 0.25em;
+    color: var(--text-color);
 }
+
+form > p:first-of-type {
+    text-align: center;
+    margin-bottom: 2.5em;
+    color: var(--text-color-light);
+}
+
 h2 {
-    font-size: 130%;
-    color: teal;
-    margin-bottom: .5em;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-top: 2em;
+    margin-bottom: 1.25em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #e0e0e0;
 }
+
+/* --- Nhãn (Label) --- */
 label {
-    float: left;
-    width: 7em;
+    display: block;
+    font-weight: 500;
     margin-bottom: 0.5em;
-    padding-top: .3em;
-    font-weight: bold;
+    color: #495057;
 }
-input[type="text"], input[type="email"] {  /* An attribute selector */
-    width: 15em;
-    margin-left: 0.5em;
-    margin-bottom: 0.5em;
+
+/* --- Các trường Input, Select --- */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 0.9em;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #fdfdff;
 }
-span {
-    margin-left: 0.5em;
-    margin-bottom: 0.5em;
+
+/* Loại bỏ khoảng trống thừa do <br> và tạo khoảng cách nhất quán */
+input[type="text"],
+input[type="email"],
+input[type="date"] {
+    margin-bottom: 1em; /* Tạo khoảng cách giữa các trường input */
 }
 br {
-    clear: both;
+    display: none; /* Ẩn thẻ <br> để kiểm soát layout tốt hơn */
 }
 
-/* The styles for the classes */
-.pad_top {
-    padding-top: 0.25em;
-}
-.margin_left {
-    margin-left: 0.5em;
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.15);
 }
 
-/* The styles for a table */
-table {
-    border: 1px solid black;
-    border-collapse: collapse;
+/* --- Radio Buttons và Checkboxes --- */
+p input[type="radio"],
+p input[type="checkbox"] {
+    margin-right: 0.7em;
+    /* Sử dụng accent-color để đổi màu mà không cần kỹ thuật phức tạp */
+    accent-color: var(--primary-blue);
+    transform: scale(1.1);
+    vertical-align: middle; /* Căn chỉnh cho thẳng hàng với chữ */
 }
-th, td {
-    border: 1px solid black;
-    text-align: left;
-    padding: .5em;
+
+/* --- Select Dropdown --- */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.9em center;
+    background-size: 1em;
+    padding-right: 2.5em; /* Thêm không gian cho icon mũi tên */
 }
-.right {
-    text-align: right;
+
+/* --- Nút Submit --- */
+input[type="submit"] {
+    width: 100%;
+    padding: 1em;
+    border: none;
+    border-radius: var(--border-radius-md);
+    background: linear-gradient(45deg, var(--primary-blue), var(--primary-blue-dark));
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 2em;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+}
+
+input[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0, 123, 255, 0.3);
+}
+
+/* --- Responsive cho thiết bị di động --- */
+@media (max-width: 700px) {
+    body {
+        padding: 1em;
+    }
+    form {
+        padding: 2em 1.5em;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
 }

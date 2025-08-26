@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-         version="6.0">
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
 
-    <!-- Đoạn này chỉ định các file trang chủ mặc định -->
+    <!-- Phần 1: Khai báo Servlet -->
+    <servlet>
+        <!-- Tên định danh cho servlet, có thể đặt tùy ý nhưng phải duy nhất -->
+        <servlet-name>SurveyServlet</servlet-name>
+        <!-- Đường dẫn đầy đủ đến class Java của servlet -->
+        <servlet-class>com.murach.survey.SurveyServlet</servlet-class>
+    </servlet>
+
+    <!-- Phần 2: Ánh xạ Servlet với một URL -->
+    <servlet-mapping>
+        <!-- Tên định danh này phải TRÙNG KHỚP với servlet-name ở trên -->
+        <servlet-name>SurveyServlet</servlet-name>
+        <!-- URL mà người dùng sẽ truy cập. Phải khớp với action trong thẻ form -->
+        <url-pattern>/survey</url-pattern>
+    </servlet-mapping>
+
+    <!-- Cấu hình trang mặc định khi truy cập vào web app -->
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
-        <welcome-file>index.htm</welcome-file>
     </welcome-file-list>
 
 </web-app>
