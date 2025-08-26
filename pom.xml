@@ -1,21 +1,60 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.example</groupId>
-  <artifactId>Lab_4.1_modify_web_week2</artifactId>
-  <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>Lab_4.1_modify_web_week2 Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <build>
-    <finalName>Lab_4.1_modify_web_week2</finalName>
-  </build>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Thay đổi các thông tin này nếu bạn muốn -->
+    <groupId>com.murach</groupId>
+    <artifactId>ch04_ex1_survey</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- Quan trọng: Đóng gói dự án thành file WAR -->
+    <packaging>war</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- Thư viện cho Servlet và JSP. Tomcat 11 sử dụng Jakarta EE 10 -->
+        <!-- Scope 'provided' nghĩa là thư viện này cần để biên dịch,
+             nhưng không cần đóng gói vào file WAR vì Tomcat đã có sẵn. -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet.jsp</groupId>
+            <artifactId>jakarta.servlet.jsp-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- Tên của file WAR sau khi build, ví dụ: ch04_ex1_survey.war -->
+        <finalName>${project.artifactId}</finalName>
+
+        <!-- Cấu hình để Maven hiểu cấu trúc thư mục không chuẩn của bạn -->
+        <!-- Maven mặc định tìm code Java trong 'src/main/java' -->
+        <sourceDirectory>src/java</sourceDirectory>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+                <configuration>
+                    <!-- Maven mặc định tìm tài nguyên web trong 'src/main/webapp' -->
+                    <!-- Chúng ta chỉ nó đến thư mục 'src/web' của bạn -->
+                    <warSourceDirectory>src/web</warSourceDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
